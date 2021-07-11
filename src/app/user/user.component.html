@@ -1,0 +1,132 @@
+ <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+  {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+</button>
+<mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Fill out your name</ng-template>
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="First Name,Last Name" formControlName="firstCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Fill out your address</ng-template>
+      <mat-form-field appearance="fill">
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+               required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Enter your age</ng-template>
+      <mat-form-field appearance="fill">
+        <mat-label>Age</mat-label>
+        <input matInput placeholder="in number(ex.18)" formControlName="thirdCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="fourthFormGroup">
+    <form [formGroup]="fourthFormGroup">
+      <ng-template matStepLabel>Enter your mobile number</ng-template>
+      <mat-form-field appearance="fill">
+        <mat-label>Mobile/Phone Number</mat-label>
+        <input matInput placeholder="tel" formControlName="fourthCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  
+  <mat-step [stepControl]="fifthFormGroup">
+    <form [formGroup]="fifthFormGroup">
+      <ng-template matStepLabel>Enter your blood group </ng-template>
+      <mat-form-field hintLabel="Max 20 characters" appearance="fill">
+    <mat-label>In Words<em>(ONLY CAPITALS)</em></mat-label>
+    <input matInput #input maxlength="30" placeholder="Ex.A POSITIVE">
+    <mat-hint align="end">{{input.value?.length || 0}}/30</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Select</mat-label>
+    <mat-select>
+      <mat-option value="option">A+</mat-option>
+      <mat-option value="option">B+</mat-option>
+      <mat-option value="option">AB+</mat-option>
+      <mat-option value="option">O+</mat-option>
+      <mat-option value="option">A-</mat-option>
+      <mat-option value="option">B-</mat-option>
+      <mat-option value="option">AB-</mat-option>
+      <mat-option value="option">O-</mat-option>
+    </mat-select>
+    <mat-hint align="end">Select from the dropdown arrow^</mat-hint>
+  </mat-form-field>
+       
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="sixthFormGroup">
+    <form [formGroup]="sixthFormGroup">
+      <ng-template matStepLabel>Enter your email id</ng-template>
+       <mat-form-field appearance="fill">
+    <mat-label>Email id</mat-label>
+    <input matInput placeholder="pat@example.com" [formControl]="email" required>
+    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="seventhFormGroup">
+    <form [formGroup]="seventhFormGroup">
+      <ng-template matStepLabel>Enter your height</ng-template>
+      <mat-form-field appearance="fill">
+        <mat-label>Height</mat-label>
+        <input matInput placeholder="in centimetres" formControlName="seventhCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="eighthFormGroup">
+    <form [formGroup]="eighthFormGroup">
+      <ng-template matStepLabel>Enter your weight</ng-template>
+      <mat-form-field appearance="fill">
+        <mat-label>Weight</mat-label>
+        <input matInput placeholder="in Kilograms" formControlName="eighthCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  
+  
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-stepper>

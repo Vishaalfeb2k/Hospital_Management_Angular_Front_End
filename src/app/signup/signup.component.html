@@ -1,0 +1,44 @@
+<div [formGroup]="form">
+<mat-card class="example-card">
+   <mat-card-header>
+     <mat-card-title>Login</mat-card-title>
+   </mat-card-header>
+   <mat-card-content>
+	 <form class="example-form" [formGroup]="form">
+		
+       <table class="example-full-width" cellspacing="0">
+         <tr>
+           <td>
+             <mat-form-field class="example-full-width">
+             <input matInput placeholder="name" formControlName="name" required>
+             </mat-form-field>
+           </td>
+         </tr>
+         <tr>
+         <td><mat-form-field class="example-full-width">
+		   <input matInput placeholder="Password" type="password" [type]="hide ? 'password' : 'text'" formControlName="password" required>
+		   <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+         </mat-form-field></td>
+	   </tr>
+	   <tr>
+         <td><mat-form-field class="example-full-width">
+           <input matInput placeholder="emailid" type="email" autocomplete="off" formControlName="emailid" required>
+         </mat-form-field></td>
+	   </tr>
+	   <tr>
+         <td><mat-form-field class="example-full-width">
+           <input matInput placeholder="phoneno" type="tel" formControlName="phoneno" required>
+         </mat-form-field></td>
+	   </tr>
+	</table>
+     </form>
+     <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+   </mat-card-content>
+   <mat-card-actions>
+     <button mat-raised-button (click)="submit()" color="primary">Submit</button>
+   </mat-card-actions>
+ </mat-card>
+
+ </div>
+
+ 
